@@ -26,8 +26,7 @@ class UserSeeder extends Seeder
         for ($i=1; $i <= 10; $i++){
             DB::table('users')->insert([
                 'name' => $faker->name,
-                'email' => $faker->email. '@test.com',
-                'alamat' => str::random(10),
+                'email' => $faker->email,
                 'password' => Hash::make('admin12345')
             ]);
     

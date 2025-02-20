@@ -2,37 +2,27 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-use faker\Factory as Faker;
 
-class Transacion extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      */
     public function run(): void
     {
-        $faker = Faker::create();
-        for ($i=1; $i <=5 ; $i++) {
-            DB::table('transacions')->insert([
-                'user_id' => $faker->numberBetween(1, 5),
-                'Court_id' => $faker->numberBetween(1, 5),
-                'Name' => $faker->name,
-                'Address' => $faker->address,
-                'Phone' => $faker->phoneNumber,
-                'Date' => $faker->date(),
-                'Starttime' => $faker->time(),
-                'Endtime' => $faker->time(),
-                'Costume' => $faker->boolean(),
-                'Shoes' => $faker->boolean(),
-                'Total' => $faker->randomDigit(),
-                'Grandtotal' => $faker->numberBetween(10000, 1000000),
-                'Paytotal' => $faker->randomNumber(6, True),
-            ]);
-        }
+        // \App\Models\User::factory(10)->create();
+
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $this->call([
+            UserSeeder::class,
+            Court_typeSeeder::class,
+            courtSeeder::class,
+            TransactionSeeder::class,
+        ]);
     }
 }
